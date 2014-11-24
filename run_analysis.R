@@ -13,7 +13,6 @@ y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
 
 selected_add <- cbind(rbind(subject_train, subject_test), rbind(y_train, y_test),selected)
 names(selected_add) <- c("subject", "y", names(selected))
-tapply(selected_add, selected_add[,1], mean)
 splitted <- split(selected_add, list(selected_add$subject,selected_add$y))
 output <- sapply(splitted, colMeans)[3:81,]
 write.table(output, "./output.txt",row.name=FALSE)
